@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div class="navBox container-fluid">
+        <div class="row">
+            <span class="col-lg-2  col-md-2 icon-lianxi contact alignLeft"> 用户手机号</span>
+            <span class="col-lg-2  col-md-2  icon-denglu contact col-lg-push-8 col-md-push-2 alignRight">
+                <%=u_tel%>
+            </span>
+        </div>
+        <a href="/login.out">登出</a>
+    </div>
+    <script>
+        let cookies = document.cookie;
+            let obj = {};
+
+            if (cookies) {
+                cookies = cookies.split(';');
+                cookies.forEach(val => {
+                    val = val.replace(/\s+/g, '')
+                    val = val.split('=');
+                    obj[val[0]] = val[1];
+                });
+                console.log(unescape(obj.user))
+            }
+
+    </script>
+</body>
+</html>

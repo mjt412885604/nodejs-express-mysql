@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>修改密码</title>
+</head>
+<body>
+    <h2>修改密码</h2>
+    <form method="post" action="/modify">
+        <div>账号：
+            <input type="text" class="phone" placeholder="请输入手机号" id="phone" name="phone">
+        </div>
+        <br>
+        <div>旧密码：
+            <input type="password" placeholder="请输入密码" class="pwd" name="pwd" id="pwd" />
+        </div>
+        <br>
+        <div>新密码
+            <input type="password" placeholder="请输入新密码" class="pwd" id="reset_pwd" name="reset_pwd" />
+        </div>
+        <br>
+        <button>修改</button>
+    </form>
+</body>
+</html>

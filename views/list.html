@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>
+        <%=title%>
+    </title>
+    <style lang="">
+        table {
+            border: 1px solid #666;
+            /* border-collapse: collapse; */
+        }
+
+        tr,
+        td {
+            border: 1px solid #666;
+            text-align: center;
+        }
+
+        .delete {
+            color: red;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>用户列表</h2>
+    <%if(users.length > 0){%>
+        <table>
+            <thead>
+                <tr>
+                    <td>u_id</td>
+                    <td>u_name</td>
+                    <td>u_password</td>
+                    <td>create_time</td>
+                    <td>u_phone</td>
+                    <td>u_email</td>
+                </tr>
+            </thead>
+            <tbody>
+                <%for(var i=0; i<users.length; i++){%>
+                    <tr>
+                        <td>
+                            <%=users[i].u_id%>
+                        </td>
+                        <td>
+                            <%=users[i].u_name%>
+                        </td>
+                        <td>
+                            <%=users[i].u_password%>
+                        </td>
+                        <td>
+                            <%=users[i].create_time%>
+                        </td>
+                        <td>
+                            <%=users[i].u_phone%>
+                        </td>
+                        <td>
+                            <%=users[i].u_email%>
+                        </td>
+                    </tr>
+                    <%}%>
+            </tbody>
+        </table>
+        <%}else {%>
+            <div style="text-align:center;">暂无数据！</div>
+            <%}%>
+
+                <script>
+                    let cookies = document.cookie;
+                    let obj = {};
+
+                    if (cookies) {
+                        cookies = cookies.split(';');
+                        cookies.forEach(val => {
+                            val = val.split('=');
+                            obj[val[0]] = val[1];
+                        });
+                        console.log(obj)
+
+                    }
+                </script>
+</body>
+
+</html>
