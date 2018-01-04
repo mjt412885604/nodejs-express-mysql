@@ -25,4 +25,25 @@ router.get('/list', function (req, res, next) {
   });
 });
 
+
+/**
+ * 返回用户列表
+ */
+router.get('/listjson', function (req, res, next) {
+  db.query("select * from admin_user", function (err, rows) {
+    if (err) {
+      res.json({
+        code: 1,
+        data: []
+      })
+    } else {
+      res.json({
+        code: 0,
+        data: rows,
+        cookie: req.cookies
+      })
+    }
+  });
+});
+
 module.exports = router;
