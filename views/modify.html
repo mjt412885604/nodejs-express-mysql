@@ -5,19 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>修改密码</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
 </head>
 <body>
     <h2>修改密码</h2>
     <form method="post" action="/modify">
-        <div>账号：
+        <div>
+            <label>账号：</label>
             <input type="text" class="phone" placeholder="请输入手机号" id="phone" name="phone">
         </div>
         <br>
-        <div>旧密码：
+        <div>
+            <label>旧密码：</label>
             <input type="password" placeholder="请输入密码" class="pwd" name="pwd" id="pwd" />
         </div>
         <br>
-        <div>新密码
+        <div>
+            <label>新密码：</label>
             <input type="password" placeholder="请输入新密码" class="pwd" id="reset_pwd" name="reset_pwd" />
         </div>
         <br>

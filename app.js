@@ -9,6 +9,8 @@ var ejs = require('ejs')
 
 var index = require('./routes/index');
 var users = require('./routes/users');
+var config = require('./config/index');
+
 
 var app = express();
 
@@ -27,7 +29,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(session({
   name: "MJT",
-  secret: "1234567",
+  secret: config.secret,
   cookie: { maxAge: 10000 },   //毫秒为单位
   resave: true,
   rolling: true

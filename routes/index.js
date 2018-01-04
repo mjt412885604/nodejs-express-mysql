@@ -1,10 +1,13 @@
 var express = require('express');
+var crypto = require('crypto');
 var router = express.Router();
 
-var db = require("../config/db");
+var db = require('../config/db');
+var utils = require('../utils/utils');
 
 /* GET home page. */
 router.get("/", function (req, res) {
+  console.log(req.session.secret)
   if (req.cookies.user) { //cookie中存在用户信息，则直接返回登陆页面
     res.render("perCenter", {
       u_tel: req.cookies.user.user
@@ -36,7 +39,7 @@ router.get('/login', function (req, res) {
 router.post('/login.do', function (req, res) {
   console.log(req.body.phone);
   console.log(req.body.pwd);
-  db.query("select * from admin_user where u_phone='" + req.body.phone + "' and u_password='" + req.body.pwd + "'", function (err, data) {
+  db.query("select * from admin_user where u_phone='" + req.body.phone + "' and u_password='" + utils.encrypt(req.body.pwd) + "'", function (err, data) {
     if (data.length > 0) {
       res.cookie("user", {
         "user": req.body.phone,
@@ -79,7 +82,7 @@ router.post('/register', function (req, res) {
     if (data.length > 0) {
       res.send("该账号已经注册！");
     } else {
-      db.query("insert into admin_user(u_phone, u_password) values('" + req.body.phone + "', '" + req.body.pwd + "')", function (err, data) {
+      db.query("insert into admin_user(u_phone, u_password) values('" + req.body.phone + "', '" + utils.encrypt(req.body.pwd) + "')", function (err, data) {
         if (data) {
           res.send("注册成功！");
         } else {
@@ -103,10 +106,10 @@ router.get('/modify', function (req, res) {
  * 修改密码->mysql更新数据
  */
 router.post('/modify', function (req, res) {
-  db.query("select * from admin_user where u_phone='" + req.body.phone + "' and u_password='" + req.body.pwd + "'", function (err, data) {
+  db.query("select * from admin_user where u_phone='" + req.body.phone + "' and u_password='" + utils.encrypt(req.body.pwd) + "'", function (err, data) {
     if (data.length > 0) {
       if (req.body.reset_pwd) {
-        db.query("update admin_user set u_password='" + req.body.reset_pwd + "' where u_phone='" + req.body.phone + "'", function (err, data) {
+        db.query("update admin_user set u_password='" + utils.encrypt(req.body.reset_pwd) + "' where u_phone='" + req.body.phone + "'", function (err, data) {
           if (data) {
             res.send("修改成功！");
           } else {

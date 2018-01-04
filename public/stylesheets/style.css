@@ -1,8 +1,39 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    padding: 10px;
+    margin: 0;
 }
 
 a {
-  color: #00B7FF;
+    color: #4285f4;
+}
+
+form {
+    border: 1px solid #333;
+    padding: 15px;
+}
+
+form label {
+    display: inline-block;
+    width: 65px;
+}
+
+input {
+    border: 1px solid #333;
+    appearance: none;
+    outline: 0;
+    padding: 5px;
+}
+
+button {
+    appearance: none;
+    outline: 0;
+    padding: 5px 15px;
+    font-size: 16px;
+    border: 1px solid #333;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #efefef;
 }
